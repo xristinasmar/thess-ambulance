@@ -222,6 +222,40 @@ ul {
     width: 100%;
 }
 
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.lang-btn {
+    color: var(--text-muted);
+    transition: var(--transition-fast);
+    text-decoration: none;
+}
+
+.lang-btn:hover {
+    color: var(--primary-blue);
+}
+
+.lang-btn.active {
+    color: var(--primary-blue);
+    pointer-events: none;
+}
+
+.lang-divider {
+    color: var(--border-color);
+    font-weight: 300;
+}
+
 .mobile-menu-toggle {
     display: none;
     background: none;
@@ -1227,6 +1261,20 @@ ul {
 
     .mobile-menu-toggle {
         display: block;
+        order: 1;
+    }
+
+    .header-actions {
+        order: 2;
+        gap: 10px;
+    }
+
+    .lang-switcher {
+        font-size: 0.8rem;
+    }
+    
+    .header-cta {
+        display: none !important; /* Hide phone button in header on mobile to save space, we have the floating button anyway */
     }
 
     /* Footer */
