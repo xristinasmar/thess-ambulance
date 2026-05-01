@@ -1252,22 +1252,25 @@ ul {
     font-size: 0.95rem;
     box-shadow: 0 4px 20px rgba(211, 47, 47, 0.45);
     white-space: nowrap;
-    animation: pulse-cta 2.5s infinite;
+    animation: mobileBlinkyPulse 1.5s infinite;
 }
 
 .mobile-cta i {
     margin-right: 8px;
 }
 
-@keyframes pulse-cta {
-
-    0%,
-    100% {
-        box-shadow: 0 4px 20px rgba(211, 47, 47, 0.45);
+@keyframes mobileBlinkyPulse {
+    0% {
+        box-shadow: 0 4px 20px rgba(211, 47, 47, 0.5), 0 0 0 0 rgba(211, 47, 47, 0.9);
+        background-color: var(--accent-red);
     }
-
-    50% {
-        box-shadow: 0 4px 30px rgba(211, 47, 47, 0.75);
+    30% {
+        box-shadow: 0 4px 20px rgba(211, 47, 47, 0.5), 0 0 0 25px rgba(211, 47, 47, 0);
+        background-color: #ff1a1a;
+    }
+    100% {
+        box-shadow: 0 4px 20px rgba(211, 47, 47, 0.5), 0 0 0 0 rgba(211, 47, 47, 0);
+        background-color: var(--accent-red);
     }
 }
 
