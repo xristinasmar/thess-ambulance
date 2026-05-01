@@ -98,12 +98,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');
     if (!contactForm) return;
 
+    // Detect Language
+    const currentLang = document.documentElement.lang || 'el';
+    const isEN = currentLang === 'en';
+
+    const translations = {
+        name: isEN ? 'Please enter your full name.' : 'Παρακαλώ εισάγετε το ονοματεπώνυμό σας.',
+        phone: isEN ? 'Please enter a valid phone number.' : 'Παρακαλώ εισάγετε έναν έγκυρο αριθμό τηλεφώνου.',
+        email: isEN ? 'Please enter a valid email address.' : 'Παρακαλώ εισάγετε έγκυρο email.',
+        message: isEN ? 'Please write your message.' : 'Παρακαλώ γράψτε το μήνυμά σας.',
+        gdpr: isEN ? 'Please accept the data processing terms.' : 'Παρακαλώ αποδεχτείτε την επεξεργασία δεδομένων.',
+        sending: isEN ? 'Sending...' : 'Αποστολή...',
+        sendBtn: isEN ? 'Send Message' : 'Αποστολή Μηνύματος'
+    };
+
     const fields = {
-        name: { el: document.getElementById('cf-name'), err: document.getElementById('err-name'), msg: 'Παρακαλώ εισάγετε το ονοματεπώνυμό σας.' },
-        phone: { el: document.getElementById('cf-phone'), err: document.getElementById('err-phone'), msg: 'Παρακαλώ εισάγετε έναν έγκυρο αριθμό τηλεφώνου.' },
-        email: { el: document.getElementById('cf-email'), err: document.getElementById('err-email'), msg: 'Παρακαλώ εισάγετε έγκυρο email.' },
-        message: { el: document.getElementById('cf-message'), err: document.getElementById('err-message'), msg: 'Παρακαλώ γράψτε το μήνυμά σας.' },
-        gdpr: { el: document.getElementById('cf-gdpr'), err: document.getElementById('err-gdpr'), msg: 'Παρακαλώ αποδεχτείτε την επεξεργασία δεδομένων.' },
+        name: { el: document.getElementById('cf-name'), err: document.getElementById('err-name'), msg: translations.name },
+        phone: { el: document.getElementById('cf-phone'), err: document.getElementById('err-phone'), msg: translations.phone },
+        email: { el: document.getElementById('cf-email'), err: document.getElementById('err-email'), msg: translations.email },
+        message: { el: document.getElementById('cf-message'), err: document.getElementById('err-message'), msg: translations.message },
+        gdpr: { el: document.getElementById('cf-gdpr'), err: document.getElementById('err-gdpr'), msg: translations.gdpr },
     };
 
     const submitBtn = document.getElementById('cf-submit');
@@ -166,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Loading state
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Αποστολή...';
+        submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> ${translations.sending}`;
 
         // ── Send via EmailJS ───────────────────────────────────────────
         // Συμπλήρωσε τα 3 παρακάτω με τα στοιχεία από το emailjs.com dashboard
@@ -183,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(() => {
                 // Σφάλμα
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Αποστολή Μηνύματος';
+                submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> ${translations.sendBtn}`;
                 const errBanner = document.getElementById('form-send-error');
                 if (errBanner) errBanner.style.display = 'flex';
             });
