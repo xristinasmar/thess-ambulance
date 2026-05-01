@@ -510,11 +510,16 @@ ul {
     box-shadow: var(--shadow-md);
     transition: var(--transition-normal);
     text-align: center;
+    position: relative; /* needed for stretched link */
+    cursor: pointer;
 }
 
 .service-item:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
+    box-shadow: 
+        0 32px 64px rgba(30, 136, 229, 0.3),
+        0 0 0 2px rgba(30, 136, 229, 0.5),
+        0 0 30px 8px rgba(30, 136, 229, 0.25);
+    transform: translateY(-20px) scale(1.03);
 }
 
 .service-item > a {
@@ -547,6 +552,14 @@ ul {
 .service-item-body h3 a {
     color: var(--primary-blue);
     transition: color var(--transition-fast);
+}
+
+/* Stretched link — makes entire card clickable */
+.service-item-body h3 a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
 }
 
 .service-item-body h3 a:hover {
@@ -632,11 +645,16 @@ ul {
     overflow: hidden;
     box-shadow: var(--shadow-md);
     transition: var(--transition-normal);
+    position: relative; /* needed for stretched link */
+    cursor: pointer;
 }
 
 .news-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-20px) scale(1.03);
+    box-shadow: 
+        0 32px 64px rgba(30, 136, 229, 0.3),
+        0 0 0 2px rgba(30, 136, 229, 0.5),
+        0 0 30px 8px rgba(30, 136, 229, 0.25);
 }
 
 .news-img {
@@ -657,6 +675,14 @@ ul {
 
 .news-content h3 a {
     color: var(--primary-blue);
+}
+
+/* Stretched link — makes entire card clickable */
+.news-content h3 a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
 }
 
 .news-content h3 a:hover {
