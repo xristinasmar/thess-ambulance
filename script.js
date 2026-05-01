@@ -103,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         phone: { el: document.getElementById('cf-phone'), err: document.getElementById('err-phone'), msg: 'Παρακαλώ εισάγετε έναν έγκυρο αριθμό τηλεφώνου.' },
         email: { el: document.getElementById('cf-email'), err: document.getElementById('err-email'), msg: 'Παρακαλώ εισάγετε έγκυρο email.' },
         message: { el: document.getElementById('cf-message'), err: document.getElementById('err-message'), msg: 'Παρακαλώ γράψτε το μήνυμά σας.' },
+        gdpr: { el: document.getElementById('cf-gdpr'), err: document.getElementById('err-gdpr'), msg: 'Παρακαλώ αποδεχτείτε την επεξεργασία δεδομένων.' },
     };
 
     const submitBtn = document.getElementById('cf-submit');
@@ -155,6 +156,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (fields.message.el.value.trim().length < 5) {
             setError(fields.message); valid = false;
         } else { clearError(fields.message); }
+
+        // GDPR Checkbox
+        if (!fields.gdpr.el.checked) {
+            setError(fields.gdpr); valid = false;
+        } else { clearError(fields.gdpr); }
 
         if (!valid) return;
 
