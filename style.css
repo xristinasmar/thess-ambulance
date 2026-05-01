@@ -51,9 +51,9 @@ ul {
 
 .container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 30px;
 }
 
 /* Buttons */
@@ -163,33 +163,29 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 90px;
+    height: 135px;
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
-    color: var(--primary-blue);
 }
 
-.logo i {
-    font-size: 2.5rem;
-    color: var(--accent-red);
+.logo-img {
+    height: 110px;
+    width: auto;
+    max-width: 250px;
+    object-fit: contain;
+    display: block;
 }
 
-.logo-text {
-    font-weight: 800;
-    font-size: 1.2rem;
-    line-height: 1.1;
-    text-transform: uppercase;
-}
-
-.logo-text small {
-    font-weight: 500;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    letter-spacing: 1px;
+/* Footer logo — no background, larger to compensate for image whitespace */
+.logo-img-footer {
+    height: 120px;
+    max-width: 220px;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
 }
 
 .main-nav .nav-links {
@@ -199,7 +195,7 @@ ul {
 
 .nav-links a {
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     color: var(--text-main);
     transition: var(--transition-fast);
     position: relative;
@@ -242,7 +238,6 @@ ul {
     min-height: 600px;
     display: flex;
     align-items: center;
-    background-image: url('thess_ambulance.png');
     background-size: cover;
     background-position: center;
 }
@@ -266,11 +261,8 @@ ul {
 
 .hero-subtitle {
     display: inline-block;
-    background-color: var(--accent-red);
-    color: white;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 0.85rem;
+    color: var(--accent-red);
+    font-size: 0.95rem;
     font-weight: 700;
     letter-spacing: 1px;
     margin-bottom: 20px;
@@ -439,61 +431,165 @@ ul {
     top: 2px;
 }
 
-/* Services Grid */
+/* Header CTA Button */
+.header-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 12px 22px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.header-cta:hover {
+    background-color: var(--primary-light);
+    transform: translateY(-1px);
+}
+
+@keyframes blinkyPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.9);
+        background-color: var(--accent-red);
+        transform: scale(1);
+    }
+    30% {
+        box-shadow: 0 0 0 25px rgba(211, 47, 47, 0);
+        background-color: #ff1a1a; /* Much brighter red */
+        transform: scale(1.06); /* Popping out */
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(211, 47, 47, 0);
+        background-color: var(--accent-red);
+        transform: scale(1);
+    }
+}
+
+/* Hero CTA pill button */
+.btn-hero-cta {
+    background-color: var(--accent-red);
+    color: white;
+    border-radius: 50px;
+    padding: 16px 36px;
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    border: 2px solid transparent;
+    transition: var(--transition-normal);
+    animation: blinkyPulse 1.5s infinite;
+}
+
+.btn-hero-cta:hover {
+    background-color: var(--accent-red-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(211, 47, 47, 0.4);
+}
+
+/* Services Grid — Image-first reference style */
 .services-grid-section {
-    padding: 100px 0;
-    background-color: var(--bg-white);
+    padding: 80px 0;
+    background-color: var(--bg-light);
 }
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    margin-top: 50px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    margin-top: 40px;
 }
 
-.service-card {
+.service-item {
     background: white;
-    border-radius: 12px;
+    border-radius: 4px;
     overflow: hidden;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-sm);
     transition: var(--transition-normal);
-    display: flex;
-    flex-direction: column;
+    text-align: center;
 }
 
-.service-card:hover {
-    transform: translateY(-10px);
+.service-item:hover {
     box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
 }
 
-.service-card-img {
-    height: 200px;
+.service-item > a {
+    display: block;
+    overflow: hidden;
+}
+
+.service-item-img {
+    height: 210px;
     background-size: cover;
     background-position: center;
+    transition: transform 0.4s ease;
 }
 
-.service-card-body {
-    padding: 30px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+.service-item:hover .service-item-img {
+    transform: scale(1.05);
 }
 
-.service-card-body h3 {
-    font-size: 1.5rem;
+.service-item-body {
+    padding: 22px 18px;
+}
+
+.service-item-body h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.service-item-body h3 a {
     color: var(--primary-blue);
-    margin-bottom: 15px;
+    transition: color var(--transition-fast);
 }
 
-.service-card-body p {
+.service-item-body h3 a:hover {
+    color: var(--accent-red);
+}
+
+.service-item-body p {
     color: var(--text-muted);
-    margin-bottom: 20px;
-    flex: 1;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.service-card-body .btn {
-    align-self: flex-start;
+.service-read-more {
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: var(--accent-red);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: var(--transition-fast);
+}
+
+.service-read-more:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .header-cta {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* News Section */
@@ -1005,8 +1101,8 @@ ul {
     /* Hero */
     .hero {
         height: auto;
-        min-height: 100svh;
-        padding: 120px 0 60px;
+        min-height: 60svh;
+        padding: 90px 0 40px;
         align-items: flex-start;
     }
 
@@ -1026,6 +1122,10 @@ ul {
     .hero-buttons .btn {
         width: 100%;
         text-align: center;
+    }
+
+    .btn-hero-cta {
+        display: none;
     }
 
     /* Features */
@@ -1080,7 +1180,7 @@ ul {
     .main-nav {
         display: none;
         position: absolute;
-        top: 90px;
+        top: 115px;
         left: 0;
         width: 100%;
         background-color: white;
@@ -1177,3 +1277,44 @@ ul {
         align-items: center;
     }
 }
+
+/* ── UI Animations ─────────────────────────────────────────── */
+/* Hero Load Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-title, .hero-subtitle, .hero-desc, .hero-buttons {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.hero-subtitle { animation-delay: 0.1s; }
+.hero-title { animation-delay: 0.3s; }
+.hero-desc { animation-delay: 0.5s; }
+.hero-buttons { animation-delay: 0.7s; }
+
+/* Scroll Reveal Classes */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
