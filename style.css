@@ -1282,13 +1282,18 @@ ul {
         padding: 50px 0;
     }
 
-    /* Services Section Header — fix overflow */
+    /* Section headers — stack vertically on mobile */
+    .section-header,
     .services-grid-section .section-header,
     .section-header[style] {
         flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
-        gap: 10px;
+        align-items: flex-start !important;
+        text-align: left !important;
+        gap: 8px;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
     }
 
     .services-grid-section h2[style] {
