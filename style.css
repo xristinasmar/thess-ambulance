@@ -1324,11 +1324,41 @@ ul {
         grid-template-columns: 1fr;
     }
 
-    /* Navigation */
+    /* Navigation — Mobile */
+    .header-content {
+        height: 75px; /* Compact header on mobile */
+    }
+
+    .logo {
+        order: 0; /* Logo always far-left */
+        flex: 1;  /* Take remaining space so actions stay right */
+    }
+
+    .logo-img {
+        height: 60px;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+        order: 2; /* Hamburger icon far right */
+        font-size: 1.3rem;
+        margin-left: 10px;
+    }
+
+    .header-actions {
+        order: 1;   /* GR|EN left of hamburger */
+        gap: 12px;
+        flex-shrink: 0;
+    }
+
+    .lang-switcher {
+        font-size: 0.8rem;
+    }
+
     .main-nav {
         display: none;
         position: absolute;
-        top: 115px;
+        top: 75px; /* Match new compact header height */
         left: 0;
         width: 100%;
         background-color: white;
@@ -1346,22 +1376,8 @@ ul {
         gap: 15px;
     }
 
-    .mobile-menu-toggle {
-        display: block;
-        order: 1;
-    }
-
-    .header-actions {
-        order: 2;
-        gap: 10px;
-    }
-
-    .lang-switcher {
-        font-size: 0.8rem;
-    }
-    
     .header-cta {
-        display: none !important; /* Hide phone button in header on mobile to save space, we have the floating button anyway */
+        display: none !important; /* Floating button handles CTA on mobile */
     }
 
     /* Footer */
